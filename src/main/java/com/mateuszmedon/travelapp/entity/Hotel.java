@@ -12,6 +12,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name="hotels")
 public class Hotel extends BaseEntity{
 
     private String name;

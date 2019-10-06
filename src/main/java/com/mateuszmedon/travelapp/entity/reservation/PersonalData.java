@@ -1,4 +1,4 @@
-package com.mateuszmedon.travelapp.entity.payment;
+package com.mateuszmedon.travelapp.entity.reservation;
 
 import com.mateuszmedon.travelapp.entity.BaseEntity;
 import lombok.AllArgsConstructor;
@@ -13,13 +13,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Member extends BaseEntity {
-
-    private String firstName;
+public class PersonalData extends BaseEntity {
 
     private String LastName;
-
-
-
-
+    private Boolean isAdult;
 }

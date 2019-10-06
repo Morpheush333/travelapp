@@ -16,6 +16,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Table(name = "trips")
 public class Trip extends BaseEntity {
 
     @Embedded
@@ -31,7 +32,7 @@ public class Trip extends BaseEntity {
     private Catering type;
     private Double adultPrice;
     private Double kidPrice;
-    private boolean promotion;
+    private Boolean promotion;
     private Integer adultAvailable;
     private Integer kidAvailable;
 
