@@ -6,6 +6,8 @@ import com.mateuszmedon.travelapp.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class TripService {
 
@@ -19,5 +21,24 @@ public class TripService {
                  "return date before departure date");
         }
         return tripRepository.save(trip);
+    }
+
+    public void deleteTrip(Long id) {
+        if(!tripRepository.existsById(id)) {
+//          TODO: throw noy found exception
+        }
+            tripRepository.deleteById(id);
+
+    }
+
+    public Trip getById(Long id) {
+
+        Optional<Trip> trip = tripRepository.findById(id);
+
+        if (trip.isPresent()) {
+//            operate if trip is empty
+//            TODO: throw not found exception
+        }
+        return trip.get();
     }
 }
