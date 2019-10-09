@@ -19,7 +19,7 @@ public class TripController {
 
     @GetMapping
     public List<Trip> getAll() {
-        return Collections.emptyList();
+        return tripService.getAllTrips();
     }
 
     @PostMapping
@@ -34,7 +34,7 @@ public class TripController {
         tripService.deleteTrip(id);
     }
 
-    @GetMapping("id")
+    @GetMapping("{id}")
     public Trip getById(@PathVariable Long id) {
         return tripService.getById(id);
     }
