@@ -23,8 +23,10 @@ public class TripService {
     public Trip validateAndSave(Trip trip) {
         if(trip.getDateFinnish()
         .isBefore(trip.getDateStart())) {
-         throw new ValidationDataException(
-                 "return date before departure date");
+            String message = String.format("Return date (%s) is before departure date (%s)",
+                    trip.getDateFinnish(),
+                    trip.getDateStart());
+         throw new ValidationDataException(message);
         }
         return tripRepository.save(trip);
     }
@@ -50,5 +52,14 @@ public class TripService {
                     "this id doesn't exist for find");
         }
         return trip.get();
+    }
+
+    public Trip update(Trip trip, Long id) {
+//        TODO remove code duplication, DRY!!!
+        if(!tripRepository.existsById(id)) {
+//            TODO exception throw not found exception
+        }
+        trip.setId(id);
+        return tripRepository.save(trip);
     }
 }

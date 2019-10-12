@@ -42,4 +42,14 @@ public class ReservationService {
         }
         return optionalReservation.get();
     }
+
+    public Reservation update(Reservation reservation, Long id) {
+
+        if (!reservationRepository.existsById(id)){
+
+        }
+        reservation.setId(id);
+        return reservationRepository.save(reservation);
+
+    }
 }

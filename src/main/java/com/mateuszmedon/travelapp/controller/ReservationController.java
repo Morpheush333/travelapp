@@ -1,6 +1,7 @@
 package com.mateuszmedon.travelapp.controller;
 
 import com.mateuszmedon.travelapp.entity.reservation.Reservation;
+import com.mateuszmedon.travelapp.entity.trip.Trip;
 import com.mateuszmedon.travelapp.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -38,5 +39,10 @@ public class ReservationController {
         return reservationService.getById(id);
     }
 
+    @PostMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Reservation update(@RequestBody Reservation reservation, @PathVariable Long id) {
+        return reservationService.update(reservation, id);
+    }
 
 }

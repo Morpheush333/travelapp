@@ -38,4 +38,10 @@ public class TripController {
     public Trip getById(@PathVariable Long id) {
         return tripService.getById(id);
     }
+
+    @PutMapping("{id}")
+    @ResponseStatus(HttpStatus.ACCEPTED)
+    public Trip update(@RequestBody Trip trip, @PathVariable Long id) {
+        return tripService.update(trip,id);
+    }
 }
