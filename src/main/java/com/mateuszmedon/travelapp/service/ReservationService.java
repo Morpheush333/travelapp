@@ -46,6 +46,7 @@ public class ReservationService {
     public Reservation update(Reservation reservation, Long id) {
 
         if (!reservationRepository.existsById(id)){
+            throw new NotFoundExceptionId("Cant update id not found ");
 
         }
         reservation.setId(id);

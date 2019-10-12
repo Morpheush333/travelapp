@@ -3,10 +3,12 @@ package com.mateuszmedon.travelapp.controller;
 import com.mateuszmedon.travelapp.entity.trip.Trip;
 import com.mateuszmedon.travelapp.service.TripService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
+
 import java.util.List;
 
 @RestController
@@ -20,6 +22,14 @@ public class TripController {
     @GetMapping
     public List<Trip> getAll() {
         return tripService.getAllTrips();
+    }
+
+    @GetMapping("paginated")
+    public Page<Trip> getAll(Pageable pageable) {
+        System.out.println(pageable.getPageSize());
+        System.out.println(pageable.getPageNumber());
+        System.out.println(pageable.getSort());
+        return tripService.getAllTrips(pageable);
     }
 
     @PostMapping
