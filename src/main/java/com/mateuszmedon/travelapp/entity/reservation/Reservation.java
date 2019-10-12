@@ -16,7 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class Purchase extends BaseEntity {
+public class Reservation extends BaseEntity {
 
     @OneToMany
     private List<PersonalData> members;
