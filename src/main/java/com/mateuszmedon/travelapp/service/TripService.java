@@ -33,7 +33,6 @@ public class TripService {
 
     public void deleteTrip(Long id) {
         if(!tripRepository.existsById(id)) {
-//          TODO: throw not found exception
             throw new NotFoundExceptionId(
                     "this id doesn't exist for delete");
         }
@@ -47,7 +46,6 @@ public class TripService {
 
         if (!trip.isPresent()) {
 //            operate if trip is empty
-//            TODO: throw not found exception
             throw new NotFoundExceptionId(
                     "this id doesn't exist for find");
         }
@@ -57,7 +55,7 @@ public class TripService {
     public Trip update(Trip trip, Long id) {
 //        TODO remove code duplication, DRY!!!
         if(!tripRepository.existsById(id)) {
-//            TODO exception throw not found exception
+            throw new NotFoundExceptionId("Can't update id not found");
         }
         trip.setId(id);
         return tripRepository.save(trip);
