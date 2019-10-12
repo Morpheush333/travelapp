@@ -13,6 +13,8 @@ import java.util.Optional;
 @Service
 public class TripService {
 
+    private static final String TRIP_NOT_FOUND = "Trip with id %s not found.";
+
     @Autowired
     private TripRepository tripRepository;
 
@@ -23,7 +25,7 @@ public class TripService {
     public Trip validateAndSave(Trip trip) {
         if(trip.getDateFinnish()
         .isBefore(trip.getDateStart())) {
-            String message = String.format("Return date (%s) is before departure date (%s)",
+            String message = String.format("Return date %s is before departure date (%s)",
                     trip.getDateFinnish(),
                     trip.getDateStart());
          throw new ValidationDataException(message);
@@ -34,10 +36,9 @@ public class TripService {
     public void deleteTrip(Long id) {
         if(!tripRepository.existsById(id)) {
             throw new NotFoundExceptionId(
-                    "this id doesn't exist for delete");
+                    String.format(TRIP_NOT_FOUND, id));
         }
             tripRepository.deleteById(id);
-
     }
 
     public Trip getById(Long id) {
@@ -47,7 +48,7 @@ public class TripService {
         if (!trip.isPresent()) {
 //            operate if trip is empty
             throw new NotFoundExceptionId(
-                    "this id doesn't exist for find");
+                    String.format(TRIP_NOT_FOUND, id));
         }
         return trip.get();
     }
@@ -55,7 +56,7 @@ public class TripService {
     public Trip update(Trip trip, Long id) {
 //        TODO remove code duplication, DRY!!!
         if(!tripRepository.existsById(id)) {
-            throw new NotFoundExceptionId("Can't update id not found");
+            throw new NotFoundExceptionId(String.format(TRIP_NOT_FOUND, id));
         }
         trip.setId(id);
         return tripRepository.save(trip);
