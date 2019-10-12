@@ -5,6 +5,8 @@ import com.mateuszmedon.travelapp.exception.NotFoundExceptionId;
 import com.mateuszmedon.travelapp.exception.ValidationDataException;
 import com.mateuszmedon.travelapp.repository.TripRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,6 +22,10 @@ public class TripService {
 
     public List<Trip> getAllTrips(){
         return tripRepository.findAll();
+    }
+
+    public Page<Trip> getAllTrips(Pageable pageable){
+        return tripRepository.findAll(pageable);
     }
 
     public Trip validateAndSave(Trip trip) {
