@@ -1,8 +1,6 @@
 package com.mateuszmedon.travelapp.config;
 
-import com.mateuszmedon.travelapp.entity.City;
-import com.mateuszmedon.travelapp.entity.Continent;
-import com.mateuszmedon.travelapp.entity.Country;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.rest.core.config.RepositoryRestConfiguration;
