@@ -13,10 +13,10 @@ import java.util.List;
 @RepositoryRestResource(collectionResourceRel = "continents", path = "continents")
 public interface ContinentRepository extends JpaRepository<Continent, Long> {
 
-//    Is overriding method and change it.
+//    Is overriding method then you can delete continent.
 //    @Override
 //    @RestResource(exported = false)
-//    Continent save(Continent continent);
+//    void deleteById (Long id);
 
 //    @RestResource
 //    List<Continent> findByNameContaining(@Param("name") String name);
